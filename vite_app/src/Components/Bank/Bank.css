@@ -21,6 +21,70 @@
     margin-bottom: 30px;
   }
   
+  /* IFSC Code Section */
+  .ifsc-container {
+    margin-bottom: 30px;
+  }
+  
+  .ifsc-label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #bbb;
+  }
+  
+  .ifsc-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #fcfafa;
+    color: black;
+    margin-bottom: 10px;
+  }
+  
+  .ifsc-button {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: #ffa500;
+    color: white;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .ifsc-button:hover {
+    background-color: #e68900;
+  }
+  
+  /* Bank Details Section */
+  .bank-details {
+    background-color: #2c2c2c;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .bank-details h2 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .bank-details pre {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #444;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
   /* Select Container */
   .select-container {
     margin-bottom: 20px;
@@ -83,5 +147,6 @@
   .select-dropdown:hover, .select-dropdown:focus {
     background-color: #555;
   }
+  
   
   

@@ -1,3 +1,5 @@
+
+
 import { useState, useEffect } from 'react';
 import './Bank.css';  // Import the CSS file
 
@@ -9,6 +11,8 @@ const Bank = () => {
   const [centers, setCenters] = useState([]);
   const [branches, setBranches] = useState([]);
   const [branchDetails, setBranchDetails] = useState(null);
+  const [bankDetails, setBankDetails] = useState(null); // For storing IFSC bank details
+  const [ifscCode, setIfscCode] = useState(''); // IFSC code input value
 
   // To store the selected values
   const [selectedState, setSelectedState] = useState('');
@@ -78,10 +82,44 @@ const Bank = () => {
     }
   }, [selectedBranch]);
 
+  // Fetch bank details based on IFSC code
+  const fetchBankDetails = () => {
+    if (ifscCode.trim() !== '') {
+      fetch(`https://bank-apis.justinclicks.com/API/V1/IFSC/${ifscCode}/`)
+        .then(response => response.json())
+        .then(data => setBankDetails(data))
+        .catch(error => console.error('Error fetching bank details:', error));
+    }
+  };
+
   return (
     <div className="app-container">
       <h1 className="app-title">Bank Branch Finder</h1>
 
+      {/* IFSC Code Lookup Section */}
+      <div className="ifsc-container">
+        <label className="ifsc-label">Enter IFSC Code:</label>
+        <input
+          type="text"
+          className="ifsc-input"
+          value={ifscCode}
+          onChange={(e) => setIfscCode(e.target.value)}
+          placeholder="Enter IFSC Code"
+        />
+        <button className="ifsc-button" onClick={fetchBankDetails}>
+          Get Bank Details
+        </button>
+
+        {/* Display IFSC Bank Details */}
+        {bankDetails && (
+          <div className="bank-details">
+            <h2>Bank Details:</h2>
+            <pre>{JSON.stringify(bankDetails, null, 2)}</pre>
+          </div>
+        )}
+      </div>
+
+      {/* State, District, City, Center, Branch Select Dropdowns */}
       <div className="select-container">
         <label className="select-label">Select State:</label>
         <select className="select-dropdown" onChange={(e) => setSelectedState(e.target.value)} value={selectedState}>
@@ -144,3 +182,4 @@ const Bank = () => {
 };
 
 export default Bank;
+
