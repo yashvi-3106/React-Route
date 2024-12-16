@@ -1,0 +1,285 @@
+.meal {
+    text-align: center;
+    font-size: 60px;
+    font-weight: 700;
+    color: rgb(233, 54, 0);
+    margin-top: 2%;
+    text-transform: uppercase; /* Capitalize text */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Adding shadow for extra depth */
+}
+
+.meal:hover {
+    color: rgb(255, 114, 114); /* Change color to golden on hover */
+}
+
+/* Styling for the category heading */
+.category {
+    margin-top: 3%;
+    /* text-align: center; */
+    font-size: 28px;
+    font-weight: 600;
+    color: rgb(233, 54, 0);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adding shadow to category title */
+}
+
+/* Add background to the container div */
+.container {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background for the meal page container */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for container */
+}
+
+/* Category list styling with a responsive grid layout */
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Dynamic grid with responsive columns */
+    gap: 30px;
+    padding: 20px;
+    list-style-type: none;
+    justify-items: center; /* Centering grid items */
+}
+
+/* Styling for each category item */
+.category-item {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow around each item */
+    transition: transform 0.3s ease-in-out;
+}
+
+.category-item:hover {
+    transform: scale(1.05); /* Slight zoom effect when hovering */
+    background-color: rgba(255, 255, 255, 1); /* Full opacity when hovered */
+}
+
+/* Styling for the category image */
+.category-image {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #ff7e5f; /* Matching border color */
+    padding: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adding shadow around images */
+    transition: transform 0.3s ease;
+}
+
+.category-image:hover {
+    transform: scale(1.1); /* Slight zoom effect on image hover */
+}
+
+/* Styling for the category links (no text decoration) */
+.category-link {
+    text-decoration: none;
+    color: inherit; /* Inherit color from the parent */
+}
+
+.meal-poaster{
+   height: 70vh;
+   width: 80%;
+   background: url(https://cdn.shopify.com/s/files/1/0249/1701/6629/files/maven_goddess_salad_hero1200x628.png?v=1646265467);
+   background-repeat: no-repeat;
+   background-size: 80vw 70vh;
+   margin: 3% auto;
+   /* margin-top: ; */
+}
+
+.welcome{
+    font-size: 25px;
+    font-weight: 600;
+
+}
+
+/* General container styles */
+.page-container {
+    background-color: #f7f7f7; /* Soft light background for the entire page */
+    font-family: 'Roboto', sans-serif; /* Modern font for the body */
+    color: #333;
+    padding: 20px;
+  }
+  
+  /* Title for the category */
+  .category-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 40px;
+    color: #444;
+    text-transform: capitalize;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Search bar container */
+  .search-container {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* Search input field */
+  .search-input {
+    padding: 12px 20px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for input field */
+  }
+  
+  /* Focused state of the search input */
+  .search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Food list container */
+  .food-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between items */
+    padding: 20px;
+    list-style-type: none;
+    margin: 0;
+    margin-top: 30px;
+  }
+  
+  /* Food item container */
+  .food-item {
+    position: relative;
+    text-align: center;
+    border-radius: 12px;
+    padding: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+  }
+  
+  /* Hover effect for food item */
+  .food-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Image styling within the food item */
+  .food-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 15px;
+  }
+  
+  /* Hover effect for food image */
+  .food-item:hover .food-image {
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  /* Title styling for each food item */
+  .food-item-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #333;
+    transition: color 0.3s ease;
+    text-transform: capitalize;
+  }
+  
+  /* Hover effect for food title */
+  .food-item:hover .food-item-title {
+    color: #007bff; /* Change color to blue on hover */
+  }
+  
+  /* Link styling within food item */
+  .food-item-link {
+    text-decoration: none;
+    color: inherit; /* Inherit color from the title */
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover effect for the link */
+  .food-item-link:hover {
+    color: #007bff; /* Change link color on hover */
+    text-decoration: underline; /* Underline effect on hover */
+  }
+  
+
+/* 
+.food-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    padding: 20px;
+    list-style-type: none;
+    margin: 0;
+    transition: all 0.3s ease-in-out;
+    margin-top: 8%;
+  }
+  
+  .food-item {
+    position: relative;
+    text-align: center;
+    border-radius: 12px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+  }
+  
+  .food-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .food-image {
+    width: 150px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .food-item:hover .food-image {
+    transform: scale(1.05); 
+  }
+ 
+  .food-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .food-item:hover h3 {
+    color: #007bff; 
+  }
+ 
+  input[type='text'] {
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-left: 35%;
+  }
+  
+  input[type='text']:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  } */
