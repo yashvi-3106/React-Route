@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from 'react';
 import './Bank.css';  // Import the CSS file
 
@@ -47,7 +45,7 @@ const Bank = () => {
         .then(data => setCities(data))
         .catch(error => console.error('Error fetching cities:', error));
     }
-  }, [selectedDistrict]);
+  }, [selectedDistrict, selectedState]);
 
   // Fetch centers when a city is selected
   useEffect(() => {
@@ -57,7 +55,7 @@ const Bank = () => {
         .then(data => setCenters(data))
         .catch(error => console.error('Error fetching centers:', error));
     }
-  }, [selectedCity]);
+  }, [selectedCity, selectedDistrict, selectedState]);
 
   // Fetch branches when a center is selected
   useEffect(() => {
@@ -67,7 +65,7 @@ const Bank = () => {
         .then(data => setBranches(data))
         .catch(error => console.error('Error fetching branches:', error));
     }
-  }, [selectedCenter]);
+  }, [selectedCenter, selectedCity, selectedDistrict, selectedState]);
 
   // Fetch branch details when a branch is selected
   useEffect(() => {
@@ -80,7 +78,7 @@ const Bank = () => {
         .then(data => setBranchDetails(data))
         .catch(error => console.error('Error fetching branch details:', error));
     }
-  }, [selectedBranch]);
+  }, [selectedBranch, selectedCenter, selectedCity, selectedDistrict, selectedState]);
 
   // Fetch bank details based on IFSC code
   const fetchBankDetails = () => {
@@ -94,7 +92,7 @@ const Bank = () => {
 
   return (
     <div className="app-container">
-      <h1 className="app-title">Bank Branch Finder</h1>
+      <h1 className="app-title">Bank Details</h1>
 
       {/* IFSC Code Lookup Section */}
       <div className="ifsc-container">
@@ -183,3 +181,228 @@ const Bank = () => {
 
 export default Bank;
 
+
+
+
+
+// import { useState, useEffect } from 'react';
+// import './Bank.css';  // Import the CSS file
+
+// const Bank = () => {
+//   // State variables for holding the data
+//   const [states, setStates] = useState([]);
+//   const [districts, setDistricts] = useState([]);
+//   const [cities, setCities] = useState([]);
+//   const [centers, setCenters] = useState([]);
+//   const [branches, setBranches] = useState([]);
+//   const [branchDetails, setBranchDetails] = useState(null);
+//   const [bankDetails, setBankDetails] = useState(null); // For storing IFSC bank details
+//   const [ifscCode, setIfscCode] = useState(''); // IFSC code input value
+
+//   // To store the selected values
+//   const [selectedState, setSelectedState] = useState('');
+//   const [selectedDistrict, setSelectedDistrict] = useState('');
+//   const [selectedCity, setSelectedCity] = useState('');
+//   const [selectedCenter, setSelectedCenter] = useState('');
+//   const [selectedBranch, setSelectedBranch] = useState('');
+
+//   // Fetch list of states
+//   useEffect(() => {
+//     const fetchStates = async () => {
+//       try {
+//         const response = await fetch('https://bank-apis.justinclicks.com/API/V1/STATE/');
+//         const data = await response.json();
+//         setStates(data);
+//       } catch (error) {
+//         console.error('Error fetching states:', error);
+//       }
+//     };
+//     fetchStates();
+//   }, []);
+
+//   // Fetch districts when a state is selected
+//   useEffect(() => {
+//     const fetchDistricts = async () => {
+//       if (selectedState) {
+//         try {
+//           const response = await fetch(`https://bank-apis.justinclicks.com/API/V1/STATE/${selectedState}/`);
+//           const data = await response.json();
+//           setDistricts(data);
+//         } catch (error) {
+//           console.error('Error fetching districts:', error);
+//         }
+//       }
+//     };
+//     fetchDistricts();
+//   }, [selectedState]);
+
+//   // Fetch cities when a district is selected
+//   useEffect(() => {
+//     const fetchCities = async () => {
+//       if (selectedDistrict) {
+//         try {
+//           const response = await fetch(`https://bank-apis.justinclicks.com/API/V1/STATE/${selectedState}/${selectedDistrict}/`);
+//           const data = await response.json();
+//           setCities(data);
+//         } catch (error) {
+//           console.error('Error fetching cities:', error);
+//         }
+//       }
+//     };
+//     fetchCities();
+//   }, [selectedDistrict, selectedState]);
+
+//   // Fetch centers when a city is selected
+//   useEffect(() => {
+//     const fetchCenters = async () => {
+//       if (selectedCity) {
+//         try {
+//           const response = await fetch(`https://bank-apis.justinclicks.com/API/V1/STATE/${selectedState}/${selectedDistrict}/${selectedCity}/`);
+//           const data = await response.json();
+//           setCenters(data);
+//         } catch (error) {
+//           console.error('Error fetching centers:', error);
+//         }
+//       }
+//     };
+//     fetchCenters();
+//   }, [selectedCity, selectedDistrict, selectedState]);
+
+//   // Fetch branches when a center is selected
+//   useEffect(() => {
+//     const fetchBranches = async () => {
+//       if (selectedCenter) {
+//         try {
+//           const response = await fetch(`https://bank-apis.justinclicks.com/API/V1/STATE/${selectedState}/${selectedDistrict}/${selectedCity}/${selectedCenter}/`);
+//           const data = await response.json();
+//           setBranches(data);
+//         } catch (error) {
+//           console.error('Error fetching branches:', error);
+//         }
+//       }
+//     };
+//     fetchBranches();
+//   }, [selectedCenter, selectedCity, selectedDistrict, selectedState]);
+
+//   // Fetch branch details when a branch is selected
+//   useEffect(() => {
+//     const fetchBranchDetails = async () => {
+//       if (selectedBranch) {
+//         const branchName = selectedBranch.endsWith('.json') ? selectedBranch : `${selectedBranch}.json`;
+//         const branchUrl = `https://bank-apis.justinclicks.com/API/V1/STATE/${selectedState}/${selectedDistrict}/${selectedCity}/${selectedCenter}/${branchName}`;
+        
+//         try {
+//           const response = await fetch(branchUrl);
+//           const data = await response.json();
+//           setBranchDetails(data);
+//         } catch (error) {
+//           console.error('Error fetching branch details:', error);
+//         }
+//       }
+//     };
+//     fetchBranchDetails();
+//   }, [selectedBranch, selectedCenter, selectedCity, selectedDistrict, selectedState]);
+
+//   // Fetch bank details based on IFSC code
+//   const fetchBankDetails = async () => {
+//     if (ifscCode.trim() !== '') {
+//       try {
+//         const response = await fetch(`https://bank-apis.justinclicks.com/API/V1/IFSC/${ifscCode}/`);
+//         const data = await response.json();
+//         setBankDetails(data);
+//       } catch (error) {
+//         console.error('Error fetching bank details:', error);
+//       }
+//     }
+//   };
+
+//   return (
+//     <div className="app-container">
+//       <h1 className="app-title">Bank Details</h1>
+
+//       {/* IFSC Code Lookup Section */}
+//       <div className="ifsc-container">
+//         <label className="ifsc-label">Enter IFSC Code:</label>
+//         <input
+//           type="text"
+//           className="ifsc-input"
+//           value={ifscCode}
+//           onChange={(e) => setIfscCode(e.target.value)}
+//           placeholder="Enter IFSC Code"
+//         />
+//         <button className="ifsc-button" onClick={fetchBankDetails}>
+//           Get Bank Details
+//         </button>
+
+//         {/* Display IFSC Bank Details */}
+//         {bankDetails && (
+//           <div className="bank-details">
+//             <h2>Bank Details:</h2>
+//             <pre>{JSON.stringify(bankDetails, null, 2)}</pre>
+//           </div>
+//         )}
+//       </div>
+
+//       {/* State, District, City, Center, Branch Select Dropdowns */}
+//       <div className="select-container">
+//         <label className="select-label">Select State:</label>
+//         <select className="select-dropdown" onChange={(e) => setSelectedState(e.target.value)} value={selectedState}>
+//           <option value="">Select State</option>
+//           {states.map((state, index) => (
+//             <option key={index} value={state}>{state}</option>
+//           ))}
+//         </select>
+//       </div>
+
+//       <div className="select-container">
+//         <label className="select-label">Select District:</label>
+//         <select className="select-dropdown" onChange={(e) => setSelectedDistrict(e.target.value)} value={selectedDistrict}>
+//           <option value="">Select District</option>
+//           {districts.map((district, index) => (
+//             <option key={index} value={district}>{district}</option>
+//           ))}
+//         </select>
+//       </div>
+
+//       <div className="select-container">
+//         <label className="select-label">Select City:</label>
+//         <select className="select-dropdown" onChange={(e) => setSelectedCity(e.target.value)} value={selectedCity}>
+//           <option value="">Select City</option>
+//           {cities.map((city, index) => (
+//             <option key={index} value={city}>{city}</option>
+//           ))}
+//         </select>
+//       </div>
+
+//       <div className="select-container">
+//         <label className="select-label">Select Center:</label>
+//         <select className="select-dropdown" onChange={(e) => setSelectedCenter(e.target.value)} value={selectedCenter}>
+//           <option value="">Select Center</option>
+//           {centers.map((center, index) => (
+//             <option key={index} value={center}>{center}</option>
+//           ))}
+//         </select>
+//       </div>
+
+//       <div className="select-container">
+//         <label className="select-label">Select Branch:</label>
+//         <select className="select-dropdown" onChange={(e) => setSelectedBranch(e.target.value)} value={selectedBranch}>
+//           <option value="">Select Branch</option>
+//           {branches.map((branch, index) => (
+//             <option key={index} value={branch}>{branch.replace('.json', '')}</option>
+//           ))}
+//         </select>
+//       </div>
+
+//       {/* Display Branch Details */}
+//       {branchDetails && (
+//         <div className="branch-details">
+//           <h2>Branch Details:</h2>
+//           <pre>{JSON.stringify(branchDetails, null, 2)}</pre>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Bank;

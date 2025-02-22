@@ -1,68 +1,6 @@
-// import { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-
-// const Cocktailsearch = () => {
-//   const { name } = useParams(); // Extract the cocktail name from the URL
-//   const [cocktail, setCocktail] = useState(null);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-
-//     if (!name) {
-//         setError("Cocktail name is missing.");
-//         setLoading(false);
-//         return;
-//       }
-//     // Fetch cocktail details based on the name from the URL
-//     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         if (data.strDrink) {
-//             console.log(data);
-//           setCocktail(data.strDrink[0]); // Get the first drink from the response
-//         } else {
-//           setError('Cocktail not found');
-//         }
-//         setLoading(false);
-//       })
-//       .catch(() => {
-//         setError('Error fetching data');
-//         setLoading(false);
-//       });
-//   }, [name]); // Re-fetch when the cocktail name in the URL changes
-
-//   if (loading) return <div>Loading...</div>;
-//   if (error) return <div>{error}</div>;
-
-//   return (
-//     <div>
-//       {cocktail && (
-//         <div>
-//           <h1>{cocktail.strDrink}</h1>
-//           <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} width="200" />
-//           <h3>Ingredients:</h3>
-//           <ul>
-//             {Object.keys(cocktail)
-//               .filter((key) => key.includes('strIngredient') && cocktail[key])
-//               .map((ingredient, index) => (
-//                 <li key={index}>
-//                   {cocktail[ingredient]} - {cocktail[`strMeasure${ingredient.slice(13)}`]}
-//                 </li>
-//               ))}
-//           </ul>
-//           <h3>Instructions:</h3>
-//           <p>{cocktail.strInstructions}</p>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Cocktailsearch;
-
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './Cocktail.css';  // Importing the CSS file
 
 const Cocktailsearch = () => {
   const { id } = useParams();
@@ -91,28 +29,31 @@ const Cocktailsearch = () => {
     fetchCocktailDetails();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className="loading-text">Loading...</p>;
+  if (error) return <p className="error-text">{error}</p>;
 
   return (
-    <div>
-      <h2>{cocktail.strDrink}</h2>
-      <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} width="200" />
-      <h3>Ingredients:</h3>
-      <ul>
-        {Object.keys(cocktail)
-          .filter((key) => key.includes('strIngredient') && cocktail[key])
-          .map((ingredient, index) => (
-            <li key={index}>
-              {cocktail[ingredient]} - {cocktail[`strMeasure${ingredient.slice(13)}`]}
-            </li>
-          ))}
-      </ul>
-      <h3>Instructions:</h3>
-      <p>{cocktail.strInstructions}</p>
+    <div className="cocktail-container">
+      <h2 className="cocktail-title">{cocktail.strDrink}</h2>
+      <img className="cocktail-image" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+      
+      <div className="cocktail-details">
+        <h3 className="section-title">Ingredients:</h3>
+        <ul className="ingredient-list">
+          {Object.keys(cocktail)
+            .filter((key) => key.includes('strIngredient') && cocktail[key])
+            .map((ingredient, index) => (
+              <li key={index} className="ingredient-item">
+                {cocktail[ingredient]} - {cocktail[`strMeasure${ingredient.slice(13)}`]}
+              </li>
+            ))}
+        </ul>
+
+        <h3 className="section-title">Instructions:</h3>
+        <p className="instructions-text">{cocktail.strInstructions}</p>
+      </div>
     </div>
   );
 };
 
 export default Cocktailsearch;
-

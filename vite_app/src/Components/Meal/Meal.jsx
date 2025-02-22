@@ -22,10 +22,10 @@ const CategoryList = () => {
   return (
     <div>
       <p className='meal'>MealMaven</p>
-      <p className='welcome'>Your ultimate destination for delicious recipes and meal inspiration. Welcome to MealMaven!</p>
+      <p className='welcome1'>Your ultimate destination for delicious recipes and meal inspiration. Welcome to MealMaven!</p>
       <div className='meal-poaster'></div>
       
-      <p className='category'>Meal Categories</p>
+      <p className='category1'>Meal Categories</p>
       <ul className="category-list">
         {categories.map((category) => (
           <li key={category.name} className="category-item">

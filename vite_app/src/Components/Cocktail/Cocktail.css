@@ -1,56 +1,279 @@
-.body{
-    width: 100%;
-    height: 1000vh;
-    background-color:black;
-}
+  .name {
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    color: #FF6347; /* Tomato red for cocktail theme */
+    left: 32%;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    z-index: 10;
+  }
+  
+  .name:hover {
+    color: #FFD700; /* Golden yellow on hover */
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
 
-.menu{
-    color: white;
-}
+  .post{
+    height: 70vh;
+    width: 90%;
+    /* background: url(https://images.assetsdelivery.com/compings_v2/ggalyna/ggalyna1805/ggalyna180500395.jpg); */
+    background-repeat: no-repeat;
+    background-size: 60vw 60vh;
+    margin: 6% auto;
+    margin-left: 17%;
+  }
+  
+  
 
-.container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 10px;
-    width: 60%;
-    margin: 40vh 25vw 0 25vw ;
-}
-
-.content{
+  .search-container {
+    position: absolute;
+    top: 27%;
+    left: 34%;
     display: flex;
     flex-direction: column;
-    width: 20%;
-}
-
-
-.name{
-    position: absolute;
-    top: 8%;
+    align-items: center;
+    gap: 15px;
+    z-index: 5;
+  }
+  
+  .search {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid #FF6347;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 300px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .search:focus {
+    border-color: #FFD700; /* Golden yellow on focus */
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+  }
+  
+  /* Cocktail List Container */
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 80%;
+    margin: 1vh auto;
+    margin-top: -28%;
+  }
+  
+  .content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
-    font-size: 45px;
-    font-weight: 600;
-    color: white;
-    left: 35%;
-}
-.name:hover{
-    color: rgba(85, 81, 81, 0.568);
-}
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .content:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
 
-.description{
-    position: absolute;
-    top: 17%;
-    left: 36%;
+  .menu {
+    color: #FFD700; /* Golden yellow for cocktail name */
     font-size: 20px;
     font-weight: 600;
-    color: black;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .button-style1 {
+    position: absolute;
+    left:102%;
+    background-color: #FF6347; /* Tomato red for the button */
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  .button-style {
+    background-color: #FF6347; /* Tomato red for the button */
+    color: white;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-style:hover {
+    background-color: #FFD700; /* Golden yellow on hover */
+  }
+  
+  /* Image Styles */
+  .image-style {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  /* Error and Loading States */
+  .error {
+    color: #ff4747; /* Red for errors */
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .loading {
+    color: #ffbf00; /* Yellow for loading state */
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  /* Dark Theme Enhancements */
+  .dark-theme .container {
+    background-color: #121212; /* Dark background for container */
+  }
+  
+  .dark-theme .content {
+    background-color: rgba(255, 255, 255, 0.1); /* Dark content background with slight opacity */
+  }
+  
+  .dark-theme .menu {
+    color: #FF6347; /* Tomato color for text on dark theme */
+  }
+  
+  .dark-theme .search {
+    background-color: rgba(255, 255, 255, 0.1); /* Darker search input */
+    border-color: #FF6347;
+  }
+  
+  .dark-theme .button-style {
+    background-color: #FF6347; /* Same color for buttons */
+  }
+  
+  .dark-theme .error {
+    color: #FF4747; /* Red error color for dark theme */
+  }
+  
+  .dark-theme .loading {
+    color: #ffbf00; /* Yellow loading color for dark theme */
+  }
+  
+ 
+  
+  
+ /* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.search{
-    position: absolute;
-    top: 30%;
-    left: 35%;
-    border: 5px dotted rgba(85, 81, 81, 0.568);
-    border-radius: 5px;
-    padding: 8px;
-    padding-right: 20%;
+.cocktail-container {
+  background-color: #fff;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.cocktail-title {
+  font-size: 36px;
+  color: #2c3e50;
+  margin: 10px 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.cocktail-image {
+  width: 250px;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cocktail-image:hover {
+  transform: scale(1.05);
+}
+
+.cocktail-details {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  color: #2980b9;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ingredient-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ingredient-item {
+  font-size: 18px;
+  color: #34495e;
+  margin-bottom: 8px;
+}
+
+.instructions-text {
+  font-size: 18px;
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
+/* Loading and Error Messages */
+.loading-text,
+.error-text {
+  font-size: 18px;
+  text-align: center;
+  color: #f39c12;
+  margin-top: 20px;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cocktail-container {
+    padding: 15px;
+  }
+
+  .cocktail-title {
+    font-size: 28px;
+  }
+
+  .cocktail-image {
+    width: 200px;
+  }
+
+  .ingredient-item {
+    font-size: 16px;
+  }
+
+  .instructions-text {
+    font-size: 16px;
+  }
 }

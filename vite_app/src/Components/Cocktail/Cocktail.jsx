@@ -1,4 +1,4 @@
-import "./Cocktail.css"
+import "./Cocktail.css";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -39,23 +39,28 @@ const Cocktail = () => {
   };
 
   return (
-    <div>
-      <div className="body">
-      <p className="name">The Cocktail Canvas</p>
+    <div className="body">
+      <div className="name">The Cocktail Canvas</div>
+      <div className="post">
+        
+        
+      </div>
       
-      
-      <form onSubmit={handleSearch}>
-        <input className="search"
-          type="text"
-          placeholder="Enter drink name"
-          value={searchTerm}
-          onChange={handleChange}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <div className="search-container">
+        <form onSubmit={handleSearch}>
+          <input
+            className="search"
+            type="text"
+            placeholder="Enter drink name"
+            value={searchTerm}
+            onChange={handleChange}
+          />
+          <button type="submit" className="button-style1">Search</button>
+        </form>
+      </div>
 
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {loading && <p className="loading">Loading...</p>}
+      {error && <p className="error">{error}</p>}
 
       {/* Display search results */}
       <div>
@@ -64,14 +69,13 @@ const Cocktail = () => {
             {cocktails.map((cocktail) => (
               <li className="content" key={cocktail.idDrink}>
                 <p className="menu">{cocktail.strDrink}</p>
-                <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} width="100" />
-                <button onClick={() => navigate(`/cocktail/${cocktail.idDrink}`)}>View Details</button>
+                <img className="image-style" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+                <button className="button-style" onClick={() => navigate(`/cocktail/${cocktail.idDrink}`)}>View Details</button>
               </li>
             ))}
           </ul>
         )}
       </div>
-    </div>
     </div>
   );
 };

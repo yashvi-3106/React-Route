@@ -1,39 +1,10 @@
-/* *{
-    margin: 0;
-    padding: 0;
-}
-
-
-.navbar{
-    background-color: rgb(161, 4, 189);
-    width: 100%;
-    height: 5vh;
-}
-
-.item{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px;
-}
-
-.link{
-    color: white;
-    text-decoration: none;
-}
-
-.link:hover{
-    color: black;
-} */
-
-
 * {
     margin: 0;
     padding: 0;
 }
 
 .navbar {
-    background: linear-gradient(135deg, rgb(161, 4, 189), rgb(0, 0, 0)); /* Adding gradient background */
+    background: linear-gradient(135deg, rgb(240, 60, 0), rgb(0, 0, 0)); /* Adding gradient background */
     width: 100%;
     height: 8vh;
 }
